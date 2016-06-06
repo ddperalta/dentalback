@@ -22,7 +22,7 @@
                 <td><?= $appointment->has('doctor') ? $this->Html->link($appointment->doctor->name, ['controller' => 'Doctors', 'action' => 'view', $appointment->doctor->id]) : '' ?></td>
                 <td><?= $appointment->has('unit') ? $this->Html->link($appointment->unit->name, ['controller' => 'Units', 'action' => 'view', $appointment->unit->id]) : '' ?></td>
                 <td>$<?= $this->Number->format($appointment->total) ?></td>
-                <td><?= h($appointment->confirmed) ?></td>
+                <td><?= $appointment->confirmed ? h('✅') : h('❌') ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Ver'), ['action' => 'view', $appointment->id]) ?>
                     <?= $this->Html->link(__('Editar'), ['action' => 'edit', $appointment->id]) ?>

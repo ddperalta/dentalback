@@ -17,6 +17,6 @@
             echo $this->Form->input('recomendations', array('label'=>'Recomendaciones'));
             ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Guardar'), ['class'=>'btn']) ?>
     <?= $this->Form->end() ?>
 </div>
