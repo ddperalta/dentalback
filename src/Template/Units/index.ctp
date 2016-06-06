@@ -1,12 +1,4 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Unit'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Appointments'), ['controller' => 'Appointments', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Appointment'), ['controller' => 'Appointments', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="units index large-9 medium-8 columns content">
+<div class="units index large-9 medium-8 columns content" data-toggle="table">
     <h3><?= __('Units') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>

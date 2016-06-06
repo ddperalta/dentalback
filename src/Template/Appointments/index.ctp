@@ -1,30 +1,16 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Appointment'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Patients'), ['controller' => 'Patients', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Patient'), ['controller' => 'Patients', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Doctors'), ['controller' => 'Doctors', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Doctor'), ['controller' => 'Doctors', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Units'), ['controller' => 'Units', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Unit'), ['controller' => 'Units', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="appointments index large-9 medium-8 columns content">
-    <h3><?= __('Appointments') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <h3><?= __('Citas') ?></h3>
+    <table cellpadding="0" cellspacing="0" data-toggle="table">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('appointment_date') ?></th>
-                <th><?= $this->Paginator->sort('patient_id') ?></th>
-                <th><?= $this->Paginator->sort('doctor_id') ?></th>
-                <th><?= $this->Paginator->sort('unit_id') ?></th>
-                <th><?= $this->Paginator->sort('total') ?></th>
-                <th><?= $this->Paginator->sort('confirmed') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
-                <th><?= $this->Paginator->sort('created') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
+                <th><?= $this->Paginator->sort('id', array('label'=>'#')) ?></th>
+                <th><?= $this->Paginator->sort('appointment_date', array('label'=>'Cinta')) ?></th>
+                <th><?= $this->Paginator->sort('patient_id', array('label'=>'Paciente')) ?></th>
+                <th><?= $this->Paginator->sort('doctor_id', array('label'=>'Doctor')) ?></th>
+                <th><?= $this->Paginator->sort('unit_id', array('label'=>'Unidad')) ?></th>
+                <th><?= $this->Paginator->sort('total', array('label'=>'Total')) ?></th>
+                <th><?= $this->Paginator->sort('confirmed', array('label'=>'Confirmada')) ?></th>
+                <th class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -35,14 +21,12 @@
                 <td><?= $appointment->has('patient') ? $this->Html->link($appointment->patient->name, ['controller' => 'Patients', 'action' => 'view', $appointment->patient->id]) : '' ?></td>
                 <td><?= $appointment->has('doctor') ? $this->Html->link($appointment->doctor->name, ['controller' => 'Doctors', 'action' => 'view', $appointment->doctor->id]) : '' ?></td>
                 <td><?= $appointment->has('unit') ? $this->Html->link($appointment->unit->name, ['controller' => 'Units', 'action' => 'view', $appointment->unit->id]) : '' ?></td>
-                <td><?= $this->Number->format($appointment->total) ?></td>
+                <td>$<?= $this->Number->format($appointment->total) ?></td>
                 <td><?= h($appointment->confirmed) ?></td>
-                <td><?= h($appointment->modified) ?></td>
-                <td><?= h($appointment->created) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $appointment->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appointment->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $appointment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointment->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $appointment->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $appointment->id]) ?>
+                    <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $appointment->id], ['confirm' => __('¿estás seguro de eliminar la cita # {0}?', $appointment->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -56,4 +40,5 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+    <?= $this->Html->link(__('Agregar cita'), ['action' => 'add'], ['class'=>'btn btn-primary']) ?>
 </div>

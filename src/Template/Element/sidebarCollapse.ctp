@@ -18,28 +18,28 @@
 				$h->tag('svg',
 					$h->tag('use', null, ['xlink:href' => '#stroked-line-graph']),
 					['class' => 'glyph stroked line-graph']
-				) . "Historail", ['controller'=>'dentalDate', 'action'=>'index'], ['escapeTitle' => false]
+				) . "Historial", ['controller'=>'appointments', 'action'=>'index'], ['escapeTitle' => false]
 			);
 		?></li>
 		<li><?= $h->link(
 				$h->tag('svg',
 					$h->tag('use', null, ['xlink:href' => '#stroked-calendar']),
 					['class' => 'glyph stroked calendar']
-				) . "Citas", ['controller'=>'dentalDate', 'action'=>'index'], ['escapeTitle' => false]
+				) . "Citas", ['controller'=>'appointments', 'action'=>'index'], ['escapeTitle' => false]
 			);
 		?></li>
 		<li><?= $h->link(
 				$h->tag('svg',
 					$h->tag('use', null, ['xlink:href' => '#stroked-table']),
 					['class' => 'glyph stroked table']
-				) . "Pacientes", ['controller'=>'user', 'action'=>'index'], ['escapeTitle' => false]
+				) . "Pacientes", ['controller'=>'patients', 'action'=>'index'], ['escapeTitle' => false]
 			);
 		?></li>
 		<li><?= $h->link(
 				$h->tag('svg',
 					$h->tag('use', null, ['xlink:href' => '#stroked-pencil']),
 					['class' => 'glyph stroked pencil']
-				) . "Alertas", ['controller'=>'dentalDate', 'action'=>'index'], ['escapeTitle' => false]
+				) . "Alertas", ['controller'=>'appointments', 'action'=>'index'], ['escapeTitle' => false]
 			);
 		?></li>
 		<li><?= $h->link(

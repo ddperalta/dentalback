@@ -930,6 +930,13 @@ h1.page-header {
 }
 
 
+@media(min-width: 768px) {
+    .content {
+        margin-left: 190px;
+    }
+}
+
+
 
 
 

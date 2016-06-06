@@ -13,6 +13,7 @@ $cakeDescription = 'Quirodental';
     <?= $this->Html->css('bootstrap.min') ?>
     <?= $this->Html->css('datepicker3') ?>
     <?= $this->Html->css('styles') ?>
+    <?= $this->Html->css('bootstrap-table') ?>
     <?= $this->Html->script('lumino.glyphs') ?>
     <?= $this->fetch('css') ?>
 
@@ -32,6 +33,7 @@ $cakeDescription = 'Quirodental';
     <?= $this->Html->script('chart.min') ?>
     <?= $this->Html->script('easypiechart') ?>
     <?= $this->Html->script('bootstrap-datepicker') ?>
+    <?= $this->Html->script('bootstrap-table') ?>
     <?= $this->fetch('script') ?>
 </body>
 </html>
