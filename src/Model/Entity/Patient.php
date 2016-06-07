@@ -52,7 +52,8 @@ class Patient extends Entity
     }
 
     protected function _getAge() {
-        return date_diff(date_create($this->_properties['birthday']), date_create('today'))->y;
+        //debug($this->_properties['birthday']);
+        return date_diff(date_create($this->_properties['birthday']), date_create('now'))->y;
     }
     /**
      * Fields that are excluded from JSON an array versions of the entity.

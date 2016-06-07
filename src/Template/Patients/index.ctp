@@ -1,7 +1,7 @@
 <div class="patients index large-9 medium-8 columns content">
     <h3><?= __('Pacientes') ?></h3>
     <?= $this->Html->link(__('Agregar Paciente'), ['action' => 'add'], ['class'=>'btn btn-primary']) ?>
-    <table cellpadding="0" cellspacing="0" class="table table-sripted table-bordered table-hover table-condensed">
+    <table cellpadding="0" cellspacing="0" class="table table-hover table-condensed">
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('patientnumber', array('label'=>'#')) ?></th>
@@ -16,16 +16,16 @@
         <tbody>
             <?php foreach ($patients as $patient): ?>
             <tr>
-                <td><?= $this->Number->format($patient->patientnumber) ?></td>
+                <td><?= h($patient->patientnumber) ?></td>
                 <td><?= h($patient->fullName) ?></td>
                 <td><?= h($patient->address) ?></td>
                 <td><?= h($patient->email) ?></td>
                 <td><?= h($patient->phone) ?></td>
                 <td><?= h($patient->birthday) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $patient->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $patient->id]) ?>
-                    <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $patient->id], ['confirm' => __('Are you sure you want to delete # {0}?', $patient->id)]) ?>
+                <td class="actions text-center">
+                    <?= $this->Html->link(__('🔎'), ['action' => 'view', $patient->id]) ?>
+                    <?= $this->Html->link(__('✏️'), ['action' => 'edit', $patient->id]) ?>
+                    <?= $this->Form->postLink(__('❌'), ['action' => 'delete', $patient->id], ['confirm' => __('¿estás seguro de eliminar paciente # {0}?', $patient->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

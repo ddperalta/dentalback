@@ -1,8 +1,8 @@
 <div class="appointments view large-9 medium-8 columns content">
     <h3><?= h($appointment->id) ?></h3>
-    <table class="vertical-table">
+    <table class="vertical-table table">
         <tr>
-            <th><?= __('Patient') ?></th>
+            <th><?= __('Paciente') ?></th>
             <td><?= $appointment->has('patient') ? $this->Html->link($appointment->patient->name, ['controller' => 'Patients', 'action' => 'view', $appointment->patient->id]) : '' ?></td>
         </tr>
         <tr>
@@ -10,7 +10,7 @@
             <td><?= $appointment->has('doctor') ? $this->Html->link($appointment->doctor->name, ['controller' => 'Doctors', 'action' => 'view', $appointment->doctor->id]) : '' ?></td>
         </tr>
         <tr>
-            <th><?= __('Unit') ?></th>
+            <th><?= __('Unidad') ?></th>
             <td><?= $appointment->has('unit') ? $this->Html->link($appointment->unit->name, ['controller' => 'Units', 'action' => 'view', $appointment->unit->id]) : '' ?></td>
         </tr>
         <tr>
@@ -22,28 +22,20 @@
             <td><?= $this->Number->format($appointment->total) ?></td>
         </tr>
         <tr>
-            <th><?= __('Appointment Date') ?></th>
+            <th><?= __('Fecha de la cita') ?></th>
             <td><?= h($appointment->appointment_date) ?></td>
         </tr>
         <tr>
-            <th><?= __('Modified') ?></th>
-            <td><?= h($appointment->modified) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Created') ?></th>
-            <td><?= h($appointment->created) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Confirmed') ?></th>
-            <td><?= $appointment->confirmed ? __('Yes') : __('No'); ?></td>
+            <th><?= __('Confirmada') ?></th>
+            <td><?= $appointment->confirmed ? __('Sí') : __('No'); ?></td>
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('Description') ?></h4>
+        <h4><?= __('Descripción') ?></h4>
         <?= $this->Text->autoParagraph(h($appointment->description)); ?>
     </div>
     <div class="row">
-        <h4><?= __('Recomendations') ?></h4>
+        <h4><?= __('Recomendaciones') ?></h4>
         <?= $this->Text->autoParagraph(h($appointment->recomendations)); ?>
     </div>
     <div class="row">
