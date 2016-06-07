@@ -1,6 +1,6 @@
 <div class="appointments index large-9 medium-8 columns content">
     <h3><?= __('Citas') ?></h3>
-    <table cellpadding="0" cellspacing="0" data-toggle="table">
+    <table cellpadding="0" cellspacing="0" class="table table-hover">
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id', array('label'=>'#')) ?></th>
@@ -17,16 +17,24 @@
             <?php foreach ($appointments as $appointment): ?>
             <tr>
                 <td><?= $this->Number->format($appointment->id) ?></td>
-                <td><?= h($appointment->appointment_date) ?></td>
+                <td><?= h($appointment->appointment_date->format('d/M/y')) ?></td>
                 <td><?= $appointment->has('patient') ? $this->Html->link($appointment->patient->name, ['controller' => 'Patients', 'action' => 'view', $appointment->patient->id]) : '' ?></td>
                 <td><?= $appointment->has('doctor') ? $this->Html->link($appointment->doctor->name, ['controller' => 'Doctors', 'action' => 'view', $appointment->doctor->id]) : '' ?></td>
                 <td><?= $appointment->has('unit') ? $this->Html->link($appointment->unit->name, ['controller' => 'Units', 'action' => 'view', $appointment->unit->id]) : '' ?></td>
                 <td>$<?= $this->Number->format($appointment->total) ?></td>
-                <td><?= $appointment->confirmed ? h('✅') : h('❌') ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $appointment->id]) ?>
-                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $appointment->id]) ?>
-                    <?= $this->Form->postLink(__('Borrar'), ['action' => 'delete', $appointment->id], ['confirm' => __('¿estás seguro de eliminar la cita # {0}?', $appointment->id)]) ?>
+                <td class="text-center">
+                <?php 
+                    if($appointment->confirmed) {
+                        echo $this->Form->postLink(__('✅'), ['action' => 'unconfirmDate', $appointment->id, 'page' => $page]); 
+                    } else {
+                        echo $this->Form->postLink(__('⛔'), ['action' => 'confirmDate', $appointment->id, 'page' => $page]); 
+                    }
+
+                ?></td>
+                <td class="actions text-center">
+                    <?= $this->Html->link(__('🔎'), ['action' => 'view', $appointment->id]) ?>
+                    <?= $this->Html->link(__('✏️'), ['action' => 'edit', $appointment->id]) ?>
+                    <?= $this->Form->postLink(__('❌'), ['action' => 'delete', $appointment->id], ['confirm' => __('¿estás seguro de eliminar la cita # {0}?', $appointment->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

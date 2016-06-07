@@ -1,4 +1,5 @@
 /vendor/*
+/src/bower_components/*
 /config/app.php
 /tmp/*
 /logs/*

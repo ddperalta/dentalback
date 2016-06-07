@@ -22,9 +22,11 @@ class AppointmentsController extends AppController
         $this->paginate = [
             'contain' => ['Patients', 'Doctors', 'Units']
         ];
+        $page = $this->request->query('page') ? $this->request->query('page') : 1;
         $appointments = $this->paginate($this->Appointments);
 
         $this->set(compact('appointments'));
+        $this->set(compact('page'));
         $this->set('_serialize', ['appointments']);
     }
 
@@ -139,22 +141,43 @@ class AppointmentsController extends AppController
             } else {
                 $this->set(['ok'=>false]);
             }
-
+        } else if ($this->request->is(['post'])) {
+            $id = isset($this->request->params['pass'][0]) ? $this->request->params['pass'][0] : 0;
+            $page = $this->request->query('page') ? $this->request->query('page') : 1;
+            if($dentalDates = $this->Appointments->get($id)) {
+                $dentalDates->set('confirmed', true);
+                $this->Appointments->save($dentalDates);
+                $this->Flash->success(__('Cita actualizada con éxito'));
+            } else {
+                $this->Flash->error(__('Verifique su conexión a internet.'));
+            }
+            return $this->redirect(['action' => 'index', '?' => ['page' =>$page]]);
         } 
     }
 
     public function unconfirmDate() {
         $this->response->header('Access-Control-Allow-Origin', '*');
-            if ($this->request->is(['get'])) {
-                $id = isset($this->request->query['id']) ? $this->request->query['id'] : 0;
-                if($dentalDates = $this->Appointments->get($id)) {
-                    $dentalDates->set('confirmed', false);
-                    $this->Appointments->save($dentalDates);
-                    $this->set(['ok'=>true]);
-                } else {
-                    $this->set(['ok'=>false]);
-                }
+        if ($this->request->is(['get'])) {
+            $id = isset($this->request->query['id']) ? $this->request->query['id'] : 0;
+            if($dentalDates = $this->Appointments->get($id)) {
+                $dentalDates->set('confirmed', false);
+                $this->Appointments->save($dentalDates);
+                $this->set(['ok'=>true]);
+            } else {
+                $this->set(['ok'=>false]);
             }
+        } else if ($this->request->is(['post'])) {
+            $id = isset($this->request->params['pass'][0]) ? $this->request->params['pass'][0] : 0;
+            $page = $this->request->query('page') ? $this->request->query('page') : 1;
+            if($dentalDates = $this->Appointments->get($id)) {
+                $dentalDates->set('confirmed', false);
+                $this->Appointments->save($dentalDates);
+                $this->Flash->success(__('Cita actualizada con éxito'));
+            } else {
+                $this->Flash->error(__('Verifique su conexión a internet.'));
+            }
+            return $this->redirect(['action' => 'index', '?' => ['page' =>$page]]);
+        }
     }
 
     public function rateDate() {

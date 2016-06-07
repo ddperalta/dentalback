@@ -1,7 +1,7 @@
-<div class="patients index large-9 medium-8 columns content" data-toggle="table">
-    <h3><?= __('Patients') ?></h3>
+<div class="patients index large-9 medium-8 columns content">
+    <h3><?= __('Pacientes') ?></h3>
     <?= $this->Html->link(__('Agregar Paciente'), ['action' => 'add'], ['class'=>'btn btn-primary']) ?>
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" class="table table-sripted table-bordered table-hover table-condensed">
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('patientnumber', array('label'=>'#')) ?></th>
