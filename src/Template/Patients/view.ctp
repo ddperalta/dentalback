@@ -53,7 +53,7 @@
             <?php foreach ($patient->appointments as $appointments): ?>
             <tr>
                 <td><?= h($appointments->appointment_date) ?></td>
-                <td><?= '$ '.h($appointments->total) ?></td>
+                <td><?= '$  '.h($appointments->total) ?></td>
                 <td><?= $appointments->confirmed ? __('Sí') : __('No'); ?></td>
                 <td><?= h($appointments->description) ?></td>
                 <td><?= h($appointments->recomendations) ?></td>

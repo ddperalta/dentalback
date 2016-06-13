@@ -15,7 +15,7 @@
                                     'maxYear' => date('Y')
                                     ]);
             echo $this->Form->input('patientnumber', array('label'=>'Número de paciente', 'class'=>'form-control'));
-            echo $this->Form->input('password', array('label'=>'Password', 'class'=>'form-control'));
+            echo $this->Form->input('password', array('label'=>'Password', 'class'=>'form-control', 'default'=>'quirodental'));
             echo $this->Form->input('active', array('label'=>'Activo', 'class'=>'checkbox'));
         ?>
     </fieldset>

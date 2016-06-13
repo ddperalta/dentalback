@@ -1,5 +1,6 @@
 <div class="appointments index large-9 medium-8 columns content">
     <h3><?= __('Citas') ?></h3>
+    <?= $this->Html->link(__('Agregar cita'), ['action' => 'add'], ['class'=>'btn btn-primary']) ?>
     <table cellpadding="0" cellspacing="0" class="table table-hover">
         <thead>
             <tr>
@@ -48,5 +49,4 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
-    <?= $this->Html->link(__('Agregar cita'), ['action' => 'add'], ['class'=>'btn btn-primary']) ?>
 </div>

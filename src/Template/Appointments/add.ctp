@@ -11,15 +11,27 @@
                     </div>
                 </div>
             </div>
-        <?php  
-            echo $this->Form->input('patient_id', ['label'=> 'Paciente','options' => $patients, 'empty' => true, 'class'=>'form-control']);
-            echo $this->Form->input('doctor_id', ['label'=> 'Doctor','options' => $doctors, 'empty' => true,'class'=>'form-control']);
-            echo $this->Form->input('unit_id', ['label'=> 'Unidad','options' => $units, 'empty' => true, 'class'=>'form-control']);
-            echo $this->Form->input('total', array('label'=>'Total $', 'class'=>'form-control'));
-            echo $this->Form->input('description', array('label'=>'Descripción', 'class'=>'form-control'));
-            echo $this->Form->input('recomendations', array('label'=>'Recomendaciones', 'class'=>'form-control'));
-        ?>
-    </fieldset>
+            <div class="row">
+            <?= $this->Form->input('patient_id', ['label'=> 'Paciente','options' => $patients, 'empty' => true, 'class'=>'form-control']); ?>
+            </div>
+            <div class="row">
+            <?= $this->Form->input('doctor_id', ['label'=> 'Doctor','options' => $doctors, 'empty' => true,'class'=>'form-control col-md-9 col-lg-9']); ?>
+            <?= $this->Html->link(__('Agregar Doctor'), ['controller'=>'doctors','action' => 'add'], ['class'=>'btn btn-primary']); ?>
+            </div>
+            <div class="row">
+            <?= $this->Form->input('unit_id', ['label'=> 'Unidad','options' => $units, 'empty' => true, 'class'=>'form-control']); ?>
+            </div>
+            <div class="row">
+            <?= $this->Form->input('total', array('label'=>'Total $', 'class'=>'form-control')); ?>
+            <a href='#' id='discount' class='btn btn-primary'>Agregar Descuento</a>
+            </div>
+            <div class="row">
+            <?= $this->Form->input('description', array('label'=>'Descripción', 'class'=>'form-control')); ?>
+            </div>
+            <div class="row">
+            <?= $this->Form->input('recomendations', array('label'=>'Recomendaciones', 'class'=>'form-control')); ?>
+            </div>
+          </fieldset>
     <?= $this->Form->button(__('Guardar'), ['class'=>'btn btn-primary form-control']) ?>
     <?= $this->Form->end() ?>
 </div>

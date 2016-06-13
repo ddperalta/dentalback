@@ -29,4 +29,11 @@ class Doctor extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    protected function _getFullName()
+    {
+        return 'Dr. '. $this->_properties['name'] . '  ' .
+            $this->_properties['lastname'];
+    }
+
 }
