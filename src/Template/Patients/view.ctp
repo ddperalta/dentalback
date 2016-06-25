@@ -1,5 +1,6 @@
 <div class="patients view large-9 medium-8 columns content">
     <h3><?= h($patient->name) ?></h3>
+    <img src="<?= $patient->image; ?>" height="100" width="100">
     <table class="vertical-table table">
         <tr>
             <th><?= __('Nombre') ?></th>

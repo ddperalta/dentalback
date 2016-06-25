@@ -4,27 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Appointment Entity.
+ * Price Entity.
  *
  * @property int $id
- * @property \Cake\I18n\Time $appointment_date
- * @property int $patient_id
- * @property \App\Model\Entity\Patient $patient
- * @property int $doctor_id
- * @property \App\Model\Entity\Doctor $doctor
- * @property int $unit_id
- * @property \App\Model\Entity\Unit $unit
- * @property float $total
- * @property bool $confirmed
- * @property bool $canceled
- * @property string $description
- * @property int $price_id
- * @property string $recomendations
- * @property string $rated
- * @property \Cake\I18n\Time $modified
+ * @property string $title
+ * @property float $quirodental
+ * @property float $convenio
+ * @property string $section
  * @property \Cake\I18n\Time $created
+ * @property \Cake\I18n\Time $modified
+ * @property \App\Model\Entity\Appointment[] $appointments
  */
-class Appointment extends Entity
+class Price extends Entity
 {
 
     /**

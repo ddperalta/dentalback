@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $birthday
  * @property int $patientnumber
  * @property string $password
+ * @property string $image
  * @property bool $active
  * @property \Cake\I18n\Time $modified
  * @property \Cake\I18n\Time $created
@@ -37,12 +38,13 @@ class Patient extends Entity
         '*' => true,
         'id' => false,
     ];
+    
     protected $_virtual = ['full_name', 'id_profile', 'age', 'birthday_string'];
     
     protected function _getFullName() {
         return $this->_properties['name'].' '.$this->_properties['lastname'].' '.$this->_properties['mothersname'];
     }
-
+ 
     protected function _getIdProfile() {
         return $this->_properties['id'];
     }

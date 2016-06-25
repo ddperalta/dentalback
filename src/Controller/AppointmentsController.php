@@ -69,7 +69,9 @@ class AppointmentsController extends AppController
         $patients = $this->Appointments->Patients->find('list', ['limit' => 200]);
         $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
         $units = $this->Appointments->Units->find('list', ['limit' => 200]);
-        $this->set(compact('appointment', 'patients', 'doctors', 'units'));
+        $prices = $this->Appointments->Prices->find('all', ['limit' => 200]);
+        $pricesList = $this->Appointments->Prices->find('list', ['limit' => 200]);
+        $this->set(compact('appointment', 'patients', 'doctors', 'units', 'prices', 'pricesList'));
         $this->set('_serialize', ['appointment']);
     }
 
@@ -98,7 +100,9 @@ class AppointmentsController extends AppController
         $patients = $this->Appointments->Patients->find('list', ['limit' => 200]);
         $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
         $units = $this->Appointments->Units->find('list', ['limit' => 200]);
-        $this->set(compact('appointment', 'patients', 'doctors', 'units'));
+        $prices = $this->Appointments->Prices->find('list', ['limit' => 200]);
+        $pricesList = $this->Appointments->Prices->find('list', ['limit' => 200]);
+        $this->set(compact('appointment', 'patients', 'doctors', 'units', 'prices', 'pricesList'));
         $this->set('_serialize', ['appointment']);
     }
 
@@ -194,5 +198,38 @@ class AppointmentsController extends AppController
             }
 
         } 
+    }
+
+    public function home()
+    {
+        $this->response->header('Access-Control-Allow-Origin', '*');
+        if ($this->request->is(['get'])) {
+        // 1) citas para hoy
+        // 2) cumpleaños para hoy
+
+            $todayDay = date('d',strtotime('now'));
+            $todayMonth = date('m',strtotime('now'));
+            $todayYear = date('Y',strtotime('now'));
+            $todayAppointments = $this->Appointments->find()
+                                                    ->select(['doctors.name', 
+                                                              'doctors.lastname', 
+                                                              'units.name', 
+                                                              'patients.name',
+                                                              'patients.lastname',
+                                                              'appointments.appointment_date',
+                                                              'appointments.description',
+                                                              'appointments.id',
+                                                            ])
+                                                    ->where(['YEAR(appointment_date)' => $todayYear,
+                                                             'DAY(appointment_date)' => $todayDay,
+                                                             'MONTH(appointment_date)' => $todayMonth
+                                                        ])
+                                                    ->innerJoinWith('Doctors')
+                                                    ->innerJoinWith('Units')
+                                                    ->innerJoinWith('Patients')
+                                                    ->order('appointment_date', 'ASC');
+            //$todayAppointments = $todayAppointments['_properties'];
+            $this->set(compact('todayAppointments'));
+        }
     }
 }

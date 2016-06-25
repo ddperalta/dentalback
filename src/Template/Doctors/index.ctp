@@ -6,6 +6,7 @@
             <tr>
                 <th><?= $this->Paginator->sort('name', array('label'=>'Nombre')) ?></th>
                 <th><?= $this->Paginator->sort('lastname', array('label'=>'Apellidos')) ?></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -13,6 +14,7 @@
             <tr>
                 <td><?= h($doctor->name) ?></td>
                 <td><?= h($doctor->lastname) ?></td>
+                <td><?= $this->Html->link('🔍',['action' => 'view', $doctor->id])?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

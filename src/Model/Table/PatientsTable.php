@@ -80,6 +80,9 @@ class PatientsTable extends Table
             ->allowEmpty('password');
 
         $validator
+            ->allowEmpty('image');
+
+        $validator
             ->boolean('active')
             ->allowEmpty('active');
 

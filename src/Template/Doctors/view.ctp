@@ -11,6 +11,18 @@
         </tr>
         
     </table>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Calificaciones</div>
+            <div class="panel-body">
+                <div class="canvas-wrapper">
+                    <canvas class="chart" id="pie-chart" ></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <div class="related">
         <h4><?= __('Citas Relacionadas') ?></h4>
         <?php if (!empty($doctor->appointments)): ?>
@@ -40,4 +52,38 @@
         </table>
         <?php endif; ?>
     </div>
+    <script>
+        var pieData = [
+                {
+                    value: 300,
+                    color:"#30a5ff",
+                    highlight: "#62b9fb",
+                    label: "⭐️"
+                },
+                {
+                    value: 50,
+                    color: "#ffb53e",
+                    highlight: "#fac878",
+                    label: "😔"
+                },
+                {
+                    value: 100,
+                    color: "#1ebfae",
+                    highlight: "#3cdfce",
+                    label: "😐"
+                },
+                {
+                    value: 120,
+                    color: "#f9243f",
+                    highlight: "#f6495f",
+                    label: "😀"
+                }
+
+            ];
+            $(document).on('ready', function() {
+                var chart4 = document.getElementById("pie-chart").getContext("2d");
+                window.myPie = new Chart(chart4).Pie(pieData, {responsive : true
+                });    
+            });
+    </script>
 </div>

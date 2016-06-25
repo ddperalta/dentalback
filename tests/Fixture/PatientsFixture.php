@@ -27,6 +27,7 @@ class PatientsFixture extends TestFixture
         'birthday' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'patientnumber' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'password' => ['type' => 'string', 'length' => 256, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'image' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'active' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
@@ -61,12 +62,13 @@ class PatientsFixture extends TestFixture
             'address' => 'Lorem ipsum dolor sit amet',
             'email' => 'Lorem ipsum dolor sit amet',
             'phone' => 'Lorem ipsum dolor sit amet',
-            'birthday' => '2016-06-06',
+            'birthday' => '2016-06-24',
             'patientnumber' => 1,
             'password' => 'Lorem ipsum dolor sit amet',
+            'image' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'active' => 1,
-            'modified' => '2016-06-06 03:37:26',
-            'created' => '2016-06-06 03:37:26'
+            'modified' => '2016-06-24 21:36:38',
+            'created' => '2016-06-24 21:36:38'
         ],
     ];
 }

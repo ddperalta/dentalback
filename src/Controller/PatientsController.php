@@ -39,6 +39,11 @@ class PatientsController extends AppController
             'contain' => ['Appointments']
         ]);
         $user = $this->Patients->get($id);
+        if ($patient->image == 'NULL') {
+            $patient->image = 'http://myapplemagazine.com/assets/defaults/small_user_avatar-dbeb63d7ce9479c5a404696e61e735620a48d889625d217e98ed9c42ea0dc05b.png';
+        } else {
+            $patient->image = 'data:image/jpge;base64,'.str_replace(' ', '+', $user->image);
+        }
         $this->set(compact('user'));
         $this->set('patient', $patient);
         $this->set('_serialize', ['patient', 'user']);
@@ -126,5 +131,39 @@ class PatientsController extends AppController
         }
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
+    }
+
+    /**
+     * SetPatientPhoto
+     */
+    public function setPhoto($id = null) 
+    {
+        $this->response->header('Access-Control-Allow-Origin', '*');
+        if ($this->request->is('POST')) {
+            if($patient = $this->Patients->get($id)) {
+                $image = $this->request->data['image'];
+                $patient->set('image', $image);
+                $this->Patients->save($patient);
+                $this->set(['ok'=>$image]);
+            } else {
+                $this->set(['ok'=>false]);
+            }
+        } else {
+                $this->set(['ok'=>false]);
+        }
+    }
+
+    public function getPhoto($id = null)
+    {
+        $this->response->header('Access-Control-Allow-Origin', '*');
+        if ($this->request->is('GET')) {
+            if($patient = $this->Patients->get($id)) {
+                $image = str_replace(' ', '+', urldecode($patient['image']));
+                $image = base64_decode($image);
+                $this->response->body($image);
+                $this->response->type('png');
+                return $this->response;
+            }
+        }
     }
 }

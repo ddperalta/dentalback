@@ -36,6 +36,16 @@
                     <?= $this->Html->link(__('🔎'), ['action' => 'view', $appointment->id]) ?>
                     <?= $this->Html->link(__('✏️'), ['action' => 'edit', $appointment->id]) ?>
                     <?= $this->Form->postLink(__('❌'), ['action' => 'delete', $appointment->id], ['confirm' => __('¿estás seguro de eliminar la cita # {0}?', $appointment->id)]) ?>
+                    <span class="addtocalendar" data-calendars="Google Calendar">
+                        <a class="atcb-link">📅</a>
+                        <var class="atc_event">
+                            <var class="atc_date_start"><?= date("Y-m-d H:i:s",strtotime($appointment->appointment_date));?></var>
+                            <var class="atc_date_end"><?= date("Y-m-d H:i:s",strtotime($appointment->appointment_date.' + 30 min'));?></var>
+                            <var class="atc_timezone">America/Mexico_City</var>
+                            <var class="atc_title"><?= $appointment->patient->fullName;?></var>
+                            <var class="atc_location"><?= $appointment->unit->name;?></var>
+                        </var>
+                    </span>
                 </td>
             </tr>
             <?php endforeach; ?>

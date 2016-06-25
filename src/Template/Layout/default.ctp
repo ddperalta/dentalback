@@ -9,6 +9,7 @@ $cakeDescription = 'Quirodental';
     <title>
         <?= $cakeDescription ?>
     </title>
+    <link href="http://addtocalendar.com/atc/1.5/atc-style-blue.css" rel="stylesheet" type="text/css">
     <?= $this->Html->meta('icon') ?>
     <!--?= //$this->Html->script('jquery.min'); ?-->
     <!--?= //$this->Html->script('bootstrap.min'); ?-->
@@ -19,6 +20,8 @@ $cakeDescription = 'Quirodental';
     <?= $this->Html->css('styles') ?>
     <!--?= $this->Html->css('bootstrap-table') ?-->
     <?= $this->Html->script('lumino.glyphs') ?>
+    <?= $this->Html->script('jquery.min') ?>
+    <?= $this->Html->script('jspdf.min') ?>
     <?= $this->fetch('css') ?>
 
     
@@ -32,10 +35,10 @@ $cakeDescription = 'Quirodental';
         <?= $this->fetch('content') ?>
     </div>
 
-    <?= $this->Html->script('jquery.min') ?>
     <?= $this->Html->script('bootstrap.min') ?>
     <?= $this->Html->script('chart.min') ?>
     <?= $this->Html->script('easypiechart') ?>
+    <?= $this->Html->script('easypiechart-data') ?>
     <?= $this->Html->script('moment-with-locales.min'); ?>
     <?= $this->Html->script('bootstrap-datetimepicker.min') ?>
     <!--?= $this->Html->script('bootstrap-table') ?-->
@@ -49,6 +52,14 @@ $cakeDescription = 'Quirodental';
                 format: 'YYYY/MM/DD HH:mm'
             });
         });
+    </script>
+    <script type="text/javascript">(function () {
+            if (window.addtocalendar)if(typeof window.addtocalendar.start == "function")return;
+            if (window.ifaddtocalendar == undefined) { window.ifaddtocalendar = 1;
+                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                s.type = 'text/javascript';s.charset = 'UTF-8';s.async = true;
+                s.src = ('https:' == window.location.protocol ? 'https' : 'http')+'://addtocalendar.com/atc/1.5/atc.min.js';
+                var h = d[g]('body')[0];h.appendChild(s); }})();
     </script>
 </body>
 </html>

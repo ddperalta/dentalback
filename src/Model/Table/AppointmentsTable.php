@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Patients
  * @property \Cake\ORM\Association\BelongsTo $Doctors
  * @property \Cake\ORM\Association\BelongsTo $Units
+ * @property \Cake\ORM\Association\BelongsTo $Prices
  */
 class AppointmentsTable extends Table
 {
@@ -42,6 +43,9 @@ class AppointmentsTable extends Table
         $this->belongsTo('Units', [
             'foreignKey' => 'unit_id'
         ]);
+        $this->belongsTo('Prices', [
+            'foreignKey' => 'price_id'
+        ]);
     }
 
     /**
@@ -69,6 +73,10 @@ class AppointmentsTable extends Table
             ->allowEmpty('confirmed');
 
         $validator
+            ->boolean('canceled')
+            ->allowEmpty('canceled');
+
+        $validator
             ->allowEmpty('description');
 
         $validator
@@ -92,6 +100,7 @@ class AppointmentsTable extends Table
         $rules->add($rules->existsIn(['patient_id'], 'Patients'));
         $rules->add($rules->existsIn(['doctor_id'], 'Doctors'));
         $rules->add($rules->existsIn(['unit_id'], 'Units'));
+        $rules->add($rules->existsIn(['price_id'], 'Prices'));
         return $rules;
     }
 }
