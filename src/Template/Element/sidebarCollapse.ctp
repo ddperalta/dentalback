@@ -11,7 +11,7 @@
 				$h->tag('svg',
 					$h->tag('use', null, ['xlink:href' => '#stroked-dashboard-dial']),
 					['class' => 'glyph stroked dashboard-dial']
-				) . "Inicio", ['controller'=>'pages', 'action'=>'home'], ['escapeTitle' => false]
+				) . "Inicio", ['controller'=>'appointments', 'action'=>'home'], ['escapeTitle' => false]
 			);
 		?></li>
 		<li><?= $h->link(

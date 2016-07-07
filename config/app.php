@@ -177,16 +177,13 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => 'Mail',
-            // The following keys are used in SMTP transports
-            'host' => 'localhost',
-            'port' => 25,
-            'timeout' => 30,
-            'username' => 'user',
-            'password' => 'secret',
-            'client' => null,
-            'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+            'className' => 'Smtp',
+            'host' => 'smtp.gmail.com',
+            'port' => 587,
+            'username' => 'ddperalta.m@gmail.com',
+            'password' => '1q"W3e$R5t',
+            'tls' => true,
+            'timeout' => 60
         ],
     ],
 
@@ -202,7 +199,7 @@ return [
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => 'you@localhost',
+            'from' => 'quirodental@quirodental.com',
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],

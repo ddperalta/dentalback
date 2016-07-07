@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\Email;
 
 /**
  * Appointments Controller
@@ -200,8 +201,7 @@ class AppointmentsController extends AppController
         } 
     }
 
-    public function home()
-    {
+    public function home() {
         $this->response->header('Access-Control-Allow-Origin', '*');
         if ($this->request->is(['get'])) {
         // 1) citas para hoy
@@ -231,5 +231,23 @@ class AppointmentsController extends AppController
             //$todayAppointments = $todayAppointments['_properties'];
             $this->set(compact('todayAppointments'));
         }
+    }
+
+    public function solicite() {
+        $this->response->header('Access-Control-Allow-Origin', '*');
+        if ($this->request->is(['get'])) {
+            $phone = isset($this->request->query['phone']) ? $this->request->query['phone'] : '(no dejó número)';
+            $date = isset($this->request->query['date']) ? $this->request->query['date'] : '(no seleccionó fecha)';
+            //$unit = isset($this->request->query['unit']) ? $this->request->query['unit'] : '(no seleccionó lugar)';
+            $patient = isset($this->request->query['patient']) ? $this->request->query['patient'] : 'no dio su nombre ';
+            $email = new Email('default');
+            $email->from(['quirodental@quirodental.com' => 'Quirodental'])
+                  //->to('mfquiroz14@quirodental.com')
+                  ->to('ddperalta.m@gmail.com')
+                  ->subject('Solicitud de cita')
+                  ->send("El paciente $patient, desea una cita para el día $date. Puedes comunicarte al teléfono $phone");
+            $this->set(['ok'=>true]);
+        }
+
     }
 }
