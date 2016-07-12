@@ -54,7 +54,7 @@
 				$h->tag('svg',
 					$h->tag('use', null, ['xlink:href' => '#stroked-male-user']),
 					['class' => 'glyph stroked male-user']
-				) . " Cerrar Sesión", ['controller'=>'home', 'action'=>'index'], ['escapeTitle' => false]
+				) . " Cerrar Sesión", ['controller'=>'users', 'action'=>'logout'], ['escapeTitle' => false]
 			);
 		?></li>
 	</ul>

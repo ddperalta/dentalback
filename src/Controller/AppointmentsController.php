@@ -67,7 +67,7 @@ class AppointmentsController extends AppController
                 $this->Flash->error(__('The appointment could not be saved. Please, try again.'));
             }
         }
-        $patients = $this->Appointments->Patients->find('list', ['limit' => 200]);
+        $patients = $this->Appointments->Patients->find('list', ['keyField' => 'id', 'valueField' => 'fullName']);
         $doctors = $this->Appointments->Doctors->find('list', ['limit' => 200]);
         $units = $this->Appointments->Units->find('list', ['limit' => 200]);
         $prices = $this->Appointments->Prices->find('all', ['limit' => 200]);

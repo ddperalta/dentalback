@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="row">
-            <?= $this->Form->input('patient_id', ['required'=>true, 'label'=> 'Paciente','options' => $patients, 'empty' => true, 'class'=>'form-control']); ?>
+            <?= $this->Form->input('patient_id', ['required'=>true, 'label'=> 'Paciente','options' => $patients, 'empty' => true, 'class'=>'form-control', 'id' => 'select-user']); ?>
             </div>
             <div class="row">
             <?= $this->Form->input('doctor_id', ['label'=> 'Doctor','options' => $doctors, 'empty' => true,'class'=>'form-control col-md-9 col-lg-9']); ?>

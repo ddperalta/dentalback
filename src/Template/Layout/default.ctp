@@ -16,6 +16,7 @@ $cakeDescription = 'Quirodental';
     <!--?= //$this->Html->script('bootstrap-datetimepicker.min'); ?-->
     <?= $this->Html->css('bootstrap.min') ?>
     <?= $this->Html->css('bootstrap-datetimepicker.min') ?>
+    <?= $this->Html->css('selectize.bootstrap3') ?>
     <!--?= //$this->Html->css('datepicker3') ?-->
     <?= $this->Html->css('styles') ?>
     <!--?= $this->Html->css('bootstrap-table') ?-->
@@ -41,6 +42,7 @@ $cakeDescription = 'Quirodental';
     <?= $this->Html->script('easypiechart-data') ?>
     <?= $this->Html->script('moment-with-locales.min'); ?>
     <?= $this->Html->script('bootstrap-datetimepicker.min') ?>
+    <?= $this->Html->script('selectize.min') ?>
     <!--?= $this->Html->script('bootstrap-table') ?-->
     <?= $this->fetch('script') ?>
     <script>
@@ -50,6 +52,10 @@ $cakeDescription = 'Quirodental';
                 sideBySide: true, 
                 defaultDate: moment(),
                 format: 'YYYY/MM/DD HH:mm'
+            });
+            $('#select-user').selectize({
+                create: true,
+                sortField: 'text'
             });
         });
     </script>

@@ -236,36 +236,8 @@
 		  }
 		}
 
-		footer { text-align: center; }
-
-		footer p {
-			color: #888;
-			font-size: 13px;
-			letter-spacing: .4px;
-		}
-
-		footer a {
-			color: #4a89dc;
-			text-decoration: none;
-			-webkit-transition:all .2s ease;
-			transition: all .2s ease;
-		}
-
-		footer a:hover {
-			color: #666;
-			text-decoration: underline;
-		}
-
-		footer img {
-			width: 80px;
-			-webkit-transition:all .2s ease;
-			transition: all .2s ease;
-		}
-
-		footer img:hover { opacity: .83; }
-
-		footer img:focus , footer a:focus { outline: none; }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
     	$(window, document, undefined).ready(function() {
 
@@ -311,28 +283,16 @@
 	  <h1>Quirodental</h1>
 	  <h3>Administracion</h3>
 	</hgroup>
-	<div class="users form">
-	<?= $this->Flash->render('auth') ?>
-	<?= $this->Form->create() ?>
-	    <fieldset>
-	        <legend><?= __('Please enter your username and password') ?></legend>
-	        <?= $this->Form->input('username') ?>
-	        <?= $this->Form->input('password') ?>
-	    </fieldset>
-	<?= $this->Form->button(__('Login')); ?>
-	<?= $this->Form->end() ?>
-	</div>
-
-	<form>
+	<form action="/users/login" method="POST">
 	  <div class="group">
-	    <input type="text"><span class="highlight"></span><span class="bar"></span>
-	    <label>Name</label>
+	    <input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
+	    <label>Usuario</label>
 	  </div>
 	  <div class="group">
-	    <input type="email"><span class="highlight"></span><span class="bar"></span>
-	    <label>Email</label>
+	    <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
+	    <label>Contraseña</label>
 	  </div>
-	  <button type="button" class="button buttonBlue">Subscribe
+	  <button type="submit" class="button buttonBlue">Entrar
 	    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
 	  </button>
 	</form>
