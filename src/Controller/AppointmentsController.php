@@ -248,6 +248,5 @@ class AppointmentsController extends AppController
                   ->send("El paciente $patient, desea una cita para el día $date. Puedes comunicarte al teléfono $phone");
             $this->set(['ok'=>true]);
         }
-
     }
 }

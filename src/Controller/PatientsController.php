@@ -39,7 +39,7 @@ class PatientsController extends AppController
             'contain' => ['Appointments']
         ]);
         $user = $this->Patients->get($id);
-        if ($patient->image == 'NULL') {
+        if ($patient->image == 'NULL' || $patient->image == '') {
             $patient->image = 'http://myapplemagazine.com/assets/defaults/small_user_avatar-dbeb63d7ce9479c5a404696e61e735620a48d889625d217e98ed9c42ea0dc05b.png';
         } else {
             $patient->image = 'data:image/jpge;base64,'.str_replace(' ', '+', $user->image);
@@ -164,6 +164,22 @@ class PatientsController extends AppController
                 $this->response->type('png');
                 return $this->response;
             }
+        }
+    }
+
+    /**
+     * Get Next Birthdays
+     */
+    public function getBrithdays($date = null) {
+        $this->response->header('Access-Control-Allow-Origin', '*');
+        if ($this->request->is('GET')) {
+            $todayDay = (int)date("d");
+            $todayMonth = (int)date("m");
+            $patients = $this->Patients
+                             ->find('all')
+                             ->where(["DAY(birthday)" => $todayDay, "MONTH(birthday)" => $todayMonth]);
+            $this->set(compact('patients'));
+            $this->set('_serialize', ['patients']);
         }
     }
 }
